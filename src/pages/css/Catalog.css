@@ -1,0 +1,22 @@
+.catalog-title{
+    max-width: 540px;
+}
+
+.catalog__list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 96px;
+}
+
+.catalog__item{
+    width: 145px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.catalog-name{
+    margin-top: 10px;
+}
+
+

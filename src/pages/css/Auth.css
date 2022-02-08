@@ -1,0 +1,57 @@
+.auth{
+    margin: 5% auto;
+    max-width: 600px;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px  #C4C4C4;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.name{
+    display: flex;
+    margin: 20px 0;
+}
+
+.email{
+    margin-bottom: 20px;
+}
+
+.pass{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.input{
+    width: 450px;
+}
+.password-input{
+    margin-bottom: 10px;
+}
+
+.first__name-input, .last__name-input{
+    width: 275px;
+}
+
+.last__name-input{
+    margin-left: 25px;
+}
+
+.link{
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.btn{
+    color:#fff;
+    background: #ffb273;
+    margin-top: 20px;
+}
