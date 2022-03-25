@@ -10,8 +10,11 @@ const TypeBar = observer(() => {
                 good.types.map(type=>
                     <div
                         key={type.id}
-                        onClick={()=>good.setSelectedType(type)}
-                        className={'goods__filter-btn'.concat(type.id === good.selectedType.id ? ' goods__filter-btn_active' : '')}>
+                        onClick={()=>{
+                            good.setType(type.name)
+                            console.log(good.selectedType)
+                        }}
+                        className={'goods__filter-btn'.concat(type.name === good.selectedType ? ' goods__filter-btn_active' : '')}>
                         {type.name}
                     </div>
                 )

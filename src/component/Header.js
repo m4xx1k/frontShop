@@ -1,10 +1,13 @@
 import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
-import {ACCOUNT_ROUTE, CART_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "./../utils/consts";
+import {ACCOUNT_ROUTE, CART_ROUTE, MAIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {Context} from "../index";
+import logo from './../img/main-logo.png'
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const {good} = useContext(Context)
+    let navigate = useNavigate();
 
     return (
         <div>
@@ -15,11 +18,15 @@ const Header = () => {
                         <div className="header__upper-menu__left">
                             {
                                 good.categories.map(category =>
-                                    <NavLink to={SHOP_ROUTE} key={category.id} >
-                                        <div className="header__upper-menu__item">
-                                            {category.name}
-                                        </div>
-                                    </NavLink>
+                                    <div
+                                        key={category.id}
+                                        className="header__upper-menu__item"
+                                        onClick={()=>{
+                                            navigate(SHOP_ROUTE)
+                                            good.setCategory(category.name)
+                                        }}>
+                                        {category.name}
+                                    </div>
                                 )
                             }
                         </div>
@@ -35,29 +42,21 @@ const Header = () => {
             <div className="header-wrapper">
                 <div className="container">
                     <div className="header">
-                        <img src="https://via.placeholder.com/122x48" alt=""/>
+                        <img src={logo} alt="" onClick={()=>navigate(MAIN_ROUTE)}/>
                         <nav className="header__nav">
-                            <NavLink to={CART_ROUTE}>
-                                <div className="header__nav-element">
-                                    <i className="fas fa-heart"></i>
-                                </div>
-                            </NavLink>
-                            <NavLink to={CART_ROUTE}>
-                                <div className="header__nav-element">
-                                    <i className="fas fa-shopping-cart"></i>
-                                </div>
-                            </NavLink>
-                            <NavLink to={ACCOUNT_ROUTE}>
-                                <div className="header__nav-element">
-                                    <i className="fas fa-user-circle"></i>
-                                </div>
-                            </NavLink>
-                            <NavLink to={CART_ROUTE}>
-                                <div className="header__nav-element">
-                                    <i className="fas fa-search"></i>
-                                </div>
-                            </NavLink>
 
+                            <div className="header__nav-element" onClick={()=>navigate(CART_ROUTE)}>
+                                <i className="fas fa-heart"></i>
+                            </div>
+                            <div className="header__nav-element" onClick={()=>navigate(CART_ROUTE)}>
+                                <i className="fas fa-shopping-cart"></i>
+                            </div>
+                            <div className="header__nav-element" onClick={()=>navigate(ACCOUNT_ROUTE)}>
+                                <i className="fas fa-user-circle"></i>
+                            </div>
+                            <div className="header__nav-element" onClick={()=>navigate(CART_ROUTE)}>
+                                <i className="fas fa-search"></i>
+                            </div>
 
                         </nav>
                         <div className="header__info">

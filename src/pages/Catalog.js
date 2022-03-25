@@ -7,8 +7,9 @@ import {SHOP_ROUTE} from "../utils/consts";
 
 const Catalog = () => {
     const {good}= useContext(Context)
-    console.log(good)
+    const categories = good.categories
     return (
+
         <div className="catalog-wrapper">
             <div className="container">
                 <div className="catalog">
@@ -18,9 +19,10 @@ const Catalog = () => {
                     
                     <div className="catalog__list">
                         {
-                            good.categories.map(category=>
+                            categories.map(category =>
+
                                 <NavLink to={SHOP_ROUTE}>
-                                    <div className="catalog__item">
+                                    <div className="catalog__item" onClick={()=>good.setCategory(category.name)}>
                                         <div className="catalog-img">
                                             <img src="https://via.placeholder.com/145" alt=""/>
                                         </div>

@@ -33,7 +33,7 @@ const MainPage = () => {
                 <div className="container">
                     <div className="hits ">
                         <div className="hits__title section__title">
-                            <div className="hits__title-line section__title-line"></div>
+                            <div className="hits__title-line section__title-line"> </div>
                             <div className="hits__title-text section__title-text">Топ 3 хита продаж</div>
                         </div>
                         <div className="hits__list">

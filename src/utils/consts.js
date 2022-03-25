@@ -7,3 +7,4 @@ export const CART_ROUTE = "/cart"
 export const GOOD_ROUTE = "/good"
 export const ACCOUNT_ROUTE = "/account"
 export const CATALOG_ROUTE = '/catalog'
+export const MAKEORDER_ROUTE = '/makeorder'

@@ -1,0 +1,105 @@
+.order__forms{
+    display: flex;
+}
+
+.label{
+    margin-top: 30px;
+}
+
+.registration, .delivery{
+    max-width: 350px;
+}
+
+.registration__form, .delivery__form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.registration{
+    margin-right: 100px;
+}
+.order__forms label{
+    margin-bottom: 10px;
+}
+
+.form-title{
+    margin-bottom: 50px;
+}
+
+.current__order{
+    line-height: 32px;
+}
+
+.cart__delivery-text{
+    margin-bottom: 20px;
+}
+
+.error{
+    color: red;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.deliveryAddress-radio{
+    margin-top: 30px;
+    margin-bottom: 65px;
+    margin-left: 10px;
+}
+
+.radio__item{
+    margin-top: 10px;
+    position: relative;
+}
+
+.radio__item-input{
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+
+.radio__item-label{
+    padding-left: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.radio__item-label::before{
+    content: "";
+    display: block;
+    height: 24px;
+    width: 24px;
+    border: 1px solid #FFB273;
+    border-radius: 50%;
+
+    position: absolute;
+    top: -2px;
+    left: -6px;
+    z-index: 1;
+
+}
+
+.order__radios{
+    display: flex;
+    margin-top: 96px;
+}
+.type__delivery, .type__payment{
+    max-width: 400px;
+}
+
+.type__delivery{
+    margin-right: 50px;
+}
+
+.order__sum{
+    font-size: 24px;
+    margin: 50px 0;
+}
+
+.order__submit-btn{
+    background: #FFB273;
+    color:#fff;
+    border: none;
+    margin-right: 24px;
+    margin-bottom: 10px;
+}

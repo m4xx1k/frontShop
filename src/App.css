@@ -63,7 +63,7 @@ a{
 }
 
 .page__path{
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .container{
@@ -111,10 +111,9 @@ a{
   padding: 16px;
 }
 .good-img{
-  margin-top: 16px;
+  cursor: pointer;
 }
 .good-name{
-  margin-top: 32px;
   cursor: pointer;
 }
 .good-info{
@@ -139,6 +138,7 @@ a{
 
 .good-amount__modify{
   height: 32px;
+  line-height: 1.15;
 }
 
 .good-amount__num{
@@ -544,6 +544,7 @@ a{
   flex-direction: column;
   padding-top: 40px;
   padding-bottom: 50px;
+  margin-top: 20px;
 }
 
 .footer__content{

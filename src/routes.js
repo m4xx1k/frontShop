@@ -6,7 +6,8 @@ import {
     GOOD_ROUTE,
     LOGIN_ROUTE, MAIN_ROUTE,
     REGISTRATION_ROUTE,
-    SHOP_ROUTE
+    SHOP_ROUTE,
+    MAKEORDER_ROUTE
 } from "./utils/consts";
 import Cart from "./pages/Cart";
 import Shop from "./pages/Shop";
@@ -14,6 +15,7 @@ import Auth from "./pages/Auth";
 import GoodPage from "./pages/GoodPage";
 import Catalog from "./pages/Catalog";
 import MainPage from "./pages/MainPage";
+import MakeOrder from "./pages/MakeOrder";
 
 export const authRoutes = [
     {
@@ -54,5 +56,9 @@ export const publicRoutes = [
     {
         path: ACCOUNT_ROUTE,
         Component: Auth
+    },
+    {
+        path: MAKEORDER_ROUTE,
+        Component: MakeOrder
     }
 ]
