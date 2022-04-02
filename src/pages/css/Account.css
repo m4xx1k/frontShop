@@ -1,0 +1,66 @@
+.account{
+    line-height: 32px;
+}
+
+.account__quit{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.account__quit-text{
+    color: #FFB273;
+    margin-right: 10px;
+}
+
+.account__edit-name__subtext{
+    color:#C4C4C4;
+}
+
+.account__edit-input{
+    width: 350px;
+    background: #f8f8f8;
+    color: #C4C4C4;
+    margin-top: 10px;
+}
+
+.account__edit-pass{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.account__edit-pass__btn{
+    width: 350px;
+    margin-top: 20px;
+}
+
+.account__orders__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.account__addinfo-label{
+    margin-top: 24px;
+}
+
+.account__addinfo__form{
+    display: flex;
+    flex-direction: column;
+}
+
+.account__addinfo-input{
+    width: 350px;
+}
+
+#addinfo-adress{
+    min-width: 540px;
+}
+
+.account__addinfo-btn{
+    margin-top: 30px;
+    margin-bottom: 96px;
+}

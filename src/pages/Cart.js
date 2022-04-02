@@ -10,7 +10,12 @@ import {MAKEORDER_ROUTE} from "../utils/consts";
 
 const Cart = observer(() => {
     let navigate = useNavigate();
-    const {good}= useContext(Context)
+    const {user}= useContext(Context)
+
+    function makeOrderSubmit(){
+        navigate(MAKEORDER_ROUTE)
+
+    }
 
     return (
         <div>
@@ -30,7 +35,7 @@ const Cart = observer(() => {
 
                         <div className="cart__list">
                             {
-                                good.cart.map(item=>
+                                user.cart.map(item=>
                                     <div key={item.id} className="cart__item">
                                         <img src="https://via.placeholder.com/128" alt="" className="good-img cart-img"/>
                                         <div className="good-content cart-content">
@@ -42,7 +47,7 @@ const Cart = observer(() => {
                                                     src={remove}
                                                     alt=""
                                                     className="good-remove__img cart-remove__img"
-                                                    onClick={()=>good.removeFromCart(item.id)}/>
+                                                    onClick={()=>user.removeFromCart(item.id)}/>
 
                                             </div>
 
@@ -61,10 +66,10 @@ const Cart = observer(() => {
 
 
 
-                        <div className="cart__sum semi-bold">Итого: {good.cartSum()}₴</div>
+                        <div className="cart__sum semi-bold">Итого: {user.cartSum()}₴</div>
 
                         <div className="cart__btns">
-                            <button className="btn cart__submit-btn" onClick={()=>navigate(MAKEORDER_ROUTE)}>Оформить заказ</button>
+                            <button className="btn cart__submit-btn" onClick={makeOrderSubmit}>Оформить заказ</button>
                             <a className="btn cart__continue-btn">Продолжить покупки</a>
                         </div>
 

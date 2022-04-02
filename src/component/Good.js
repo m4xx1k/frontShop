@@ -8,6 +8,13 @@ import {Context} from "../index";
 const Good = ({info}) => {
     let navigate = useNavigate();
     const {good}= useContext(Context)
+    const {user} = useContext(Context)
+
+
+    function addToCartBtn(info){
+        user.addToCart({...info, count: good.goods.find(elem=>elem.id===info.id).count})
+        good.goods.find(elem=>elem.id===info.id).count = 1
+    }
 
     return (
         <div className="good">
@@ -37,7 +44,7 @@ const Good = ({info}) => {
                 </div>
                 <div className="good-save">
                     <div className="good-save__text"
-                         onClick={()=>good.addToCart({...info, count: good.goods.find(elem=>elem.id===info.id).count})}>
+                         onClick={()=>addToCartBtn(info)}>
                             Добавить в корзину
                     </div>
                     <i className="far fa-heart"> </i>

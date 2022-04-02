@@ -7,16 +7,17 @@ import {observer} from "mobx-react-lite";
 const Counter = observer(({props}) => {
 
     const {good} = useContext(Context)
+    const {user} = useContext(Context)
     let count;
     if(props.inCart){
-         count = good.cart.find(elem => elem.id === props.id).count
+         count = user.cart.find(elem => elem.id === props.id).count
     }else{
          count = good.goods.find(elem => elem.id === props.id).count
     }
 
     const increment = () => {
         if(props.inCart){
-            good.cart.find(elem => elem.id === props.id).count+=1
+            user.cart.find(elem => elem.id === props.id).count+=1
         }else{
             good.goods.find(elem => elem.id === props.id).count+=1
         }
@@ -27,7 +28,7 @@ const Counter = observer(({props}) => {
     const decrement = () => {
         if(count>=2){
             if(props.inCart){
-                good.cart.find(elem => elem.id === props.id).count-=1
+                user.cart.find(elem => elem.id === props.id).count-=1
             }else{
                 good.goods.find(elem => elem.id === props.id).count-=1
             }

@@ -11,7 +11,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className="header__upper-wrapper">
+            <div className={"header__upper-wrapper"}>
                 <div className="container">
                     <div className="header__upper">
 

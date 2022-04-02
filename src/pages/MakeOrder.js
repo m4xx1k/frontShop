@@ -3,20 +3,19 @@ import "./css/MakeOrder.css"
 import {Context} from "../index";
 import {Formik} from "formik";
 import * as yup from 'yup';
+import {observer} from "mobx-react-lite";
 
-
-const MakeOrder = () => {
-    const {good}= useContext(Context)
-
+const MakeOrder = observer(() => {
+    const {user}= useContext(Context)
 
     const validation = yup.object().shape({
         firstName: yup.string().required("Обязательно"),
         secondName: yup.string().required("Обязательно"),
         email: yup.string().required("Обязательно"),
-        phone: yup.number().typeError("Должно быть числом").required("Обязательно"),
-        town: yup.string().required("Обязательно"),
-        deliveryAdress: yup.string().required("Обязательно"),
-        deliveryType: yup.string().required("Обязательно"),
+        phone: yup.number().typeError("Должно быть числом").positive().integer().required("Обязательно"),
+        town: yup.string(),
+        deliveryAdress: yup.string(),
+        deliveryType: yup.string(),
         deliveryService: yup.string().required("Обязательно"),
         payment: yup.string().required("Обязательно"),
 
@@ -48,7 +47,11 @@ const MakeOrder = () => {
                     }}
                         validateOnBlur
                         validationSchema={validation}
-                        onSubmit={(values) => console.log(values)}>
+                        onSubmit={(values) => {
+                            user.makeOrder(values)
+                            console.log(user.orders)
+                            console.log(values)
+                        }}>
 
                         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty})=>(
                            <>
@@ -260,7 +263,7 @@ const MakeOrder = () => {
                                        </div>
                                    </div>
                                </div>
-                               <div className="order__sum semi-bold">Итого: {good.cartSum()}₴</div>
+                               <div className="order__sum semi-bold">Итого: {user.cartSum()}₴</div>
 
                                <div className="order__btns">
                                    <button
@@ -284,6 +287,6 @@ const MakeOrder = () => {
             </div>
         </div>
     );
-};
+});
 
 export default MakeOrder;
