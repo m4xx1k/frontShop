@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
-import {ACCOUNT_ROUTE, CART_ROUTE, MAIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ACCOUNT_ROUTE, CART_ROUTE, MAIN_ROUTE, SHOP_ROUTE, LIKED_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import logo from './../img/main-logo.png'
 import { useNavigate } from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
-const Header = () => {
+const Header = observer(() => {
     const {good} = useContext(Context)
     let navigate = useNavigate();
 
@@ -45,7 +46,7 @@ const Header = () => {
                         <img src={logo} alt="" onClick={()=>navigate(MAIN_ROUTE)}/>
                         <nav className="header__nav">
 
-                            <div className="header__nav-element" onClick={()=>navigate(CART_ROUTE)}>
+                            <div className="header__nav-element" onClick={()=>navigate(LIKED_ROUTE)}>
                                 <i className="fas fa-heart"></i>
                             </div>
                             <div className="header__nav-element" onClick={()=>navigate(CART_ROUTE)}>
@@ -75,6 +76,6 @@ const Header = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Header;

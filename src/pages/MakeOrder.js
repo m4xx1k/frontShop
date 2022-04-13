@@ -49,8 +49,6 @@ const MakeOrder = observer(() => {
                         validationSchema={validation}
                         onSubmit={(values) => {
                             user.makeOrder(values)
-                            console.log(user.orders)
-                            console.log(values)
                         }}>
 
                         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty})=>(

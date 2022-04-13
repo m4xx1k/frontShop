@@ -12,7 +12,6 @@ const TypeBar = observer(() => {
                         key={type.id}
                         onClick={()=>{
                             good.setType(type.name)
-                            console.log(good.selectedType)
                         }}
                         className={'goods__filter-btn'.concat(type.name === good.selectedType ? ' goods__filter-btn_active' : '')}>
                         {type.name}

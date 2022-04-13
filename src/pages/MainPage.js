@@ -38,7 +38,7 @@ const MainPage = () => {
                         </div>
                         <div className="hits__list">
                             {
-                                good.goods.slice(0,3).map(item=>
+                                good.allGoods.slice(0,3).map(item=>
 
                                         <Good info={item} key={item.id}/>
 

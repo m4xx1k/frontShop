@@ -3,17 +3,18 @@ import Counter from "./Counter";
 import { useNavigate } from "react-router-dom";
 import {GOOD_ROUTE} from "../utils/consts";
 import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 
-const Good = ({info}) => {
+const Good = observer(({info}) => {
     let navigate = useNavigate();
     const {good}= useContext(Context)
     const {user} = useContext(Context)
 
 
     function addToCartBtn(info){
-        user.addToCart({...info, count: good.goods.find(elem=>elem.id===info.id).count})
-        good.goods.find(elem=>elem.id===info.id).count = 1
+        user.addToCart({...info, count: good.allGoods.find(elem=>elem.id===info.id).count})
+        good.allGoods.find(elem=>elem.id===info.id).count = 1
     }
 
     return (
@@ -42,16 +43,19 @@ const Good = ({info}) => {
                     <div className="good-price">{info.price}₴</div>
                     <Counter props={{id: info.id, inCart: false}}/>
                 </div>
+
                 <div className="good-save">
-                    <div className="good-save__text"
-                         onClick={()=>addToCartBtn(info)}>
-                            Добавить в корзину
+                    <div className="good-addToCart" onClick={()=>addToCartBtn(info)}>Добавить в корзину</div>
+                    <div className="good-addToLiked" onClick={()=>user.addToLiked(info)}>
+                        {
+                            info.liked ? <i className="fas fa-heart"> </i> : <i className="far fa-heart"> </i>
+                        }
                     </div>
-                    <i className="far fa-heart"> </i>
+
                 </div>
             </div>
         </div>
     );
-};
+});
 
 export default Good;

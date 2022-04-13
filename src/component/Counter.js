@@ -12,14 +12,18 @@ const Counter = observer(({props}) => {
     if(props.inCart){
          count = user.cart.find(elem => elem.id === props.id).count
     }else{
-         count = good.goods.find(elem => elem.id === props.id).count
+        console.log(props.id)
+        good.allGoods.forEach(elem=>{
+            console.log(elem.id, elem.count)
+        })
+        count = good.allGoods.find(elem => elem.id === props.id).count
     }
 
     const increment = () => {
         if(props.inCart){
             user.cart.find(elem => elem.id === props.id).count+=1
         }else{
-            good.goods.find(elem => elem.id === props.id).count+=1
+            good.allGoods.find(elem => elem.id === props.id).count+=1
         }
 
     }
@@ -30,7 +34,7 @@ const Counter = observer(({props}) => {
             if(props.inCart){
                 user.cart.find(elem => elem.id === props.id).count-=1
             }else{
-                good.goods.find(elem => elem.id === props.id).count-=1
+                good.allGoods.find(elem => elem.id === props.id).count-=1
             }
         }
     }
@@ -39,10 +43,10 @@ const Counter = observer(({props}) => {
         <div className="good-amount">
             <div className="good-amount__num">{count} шт</div>
             <div className="good-amount__modify">
-                <div className="good-amount__up" onClick={increment}>
+                <div className="good-amount__up" onClick={()=>increment()}>
                     <i className="fas fa-angle-up good-amount__up"> </i>
                 </div>
-                <div className="good-amount__down" onClick={decrement}>
+                <div className="good-amount__down" onClick={()=>decrement()}>
                     <i className="fas fa-angle-down good-amount__down"> </i>
                 </div>
             </div>

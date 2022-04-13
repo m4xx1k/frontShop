@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Route, Routes} from "react-router-dom";
-import {authRoutes, publicRoutes} from "../routes";
+import {authRoutes, publicRoutes, adminRoutes} from "../routes";
 import {Context} from "../index";
 import MainPage from "../pages/MainPage";
 
@@ -13,6 +13,10 @@ const AppRouter = () => {
             {user.isAuth && authRoutes.map(({path, Component})=>
                 <Route key={path} path={path} element={<Component/>}/>
             )}
+
+            {user._isAdmin && adminRoutes.map(({path, Component})=>
+                    <Route key={path} path={path} element={<Component/>}/>
+                )}
 
             { publicRoutes.map(({path, Component})=>
                 <Route key={path} path={path} element={<Component/>}/>

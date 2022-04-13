@@ -59,3 +59,40 @@ h1,h2,h3,h4,h5,h6{
 .good-amount__up, .good-amount__down{
     font-size: 14px;
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination__item{
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background: #d9d9d9;
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pagination__item:last-child{
+    margin-right: 0;
+}
+
+.pagination__item-active{
+    width: 45px;
+    height: 45px;
+    background: #FFCCA1;
+    color: #fff;
+}
+
+.pagination__item:hover{
+    background: #FFCCA1;
+    color: #fff;
+}

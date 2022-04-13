@@ -37,7 +37,7 @@ const Cart = observer(() => {
                             {
                                 user.cart.map(item=>
                                     <div key={item.id} className="cart__item">
-                                        <img src="https://via.placeholder.com/128" alt="" className="good-img cart-img"/>
+                                        <img src="https://via.placeholder.com/128" alt="" className="cart-img"/>
                                         <div className="good-content cart-content">
                                             <div className="good-name cart-name">{item.name}</div>
                                             <Counter props={{id: item.id, inCart: true}}/>

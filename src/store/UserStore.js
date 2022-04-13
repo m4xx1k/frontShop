@@ -6,6 +6,7 @@ export default  class UserStore {
     constructor() {
 
         this._isAuth = true
+        this._isAdmin = true
         this.user ={
             email: '',
             phone: '',
@@ -23,24 +24,9 @@ export default  class UserStore {
         }
 
 
-        this.cart = [
-            {
-                id: 1,
-                name: "Антибактериальный антисептик спрей для рук Грейпфрут 50мл1",
-                price: 400,
-                img: 'https:via.placeholder.com/312x290',
-                type: 'Антисептики',
-                count: 1
-            },
-            {
-                id: 9,
-                name: "Крема9",
-                price: 80,
-                img: 'https:via.placeholder.com/312x290',
-                type: 'Крема',
-                count: 1
-            },
-        ]
+        this.cart = []
+
+        this.liked = []
 
         this.orders = [
             {
@@ -118,120 +104,6 @@ export default  class UserStore {
                     }
                 }
             },
-            {
-                id: 723,
-                status: "Доставлений",
-                date: '28.01.2222',
-                sum: 560,
-                count: 2,
-                details: {
-                    goods: [
-                        {
-                            id: 33,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                        {
-                            id: 34,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                    ],
-                    delivery: {
-                        firstName:'',
-                        secondName:'',
-                        phone:'',
-                        email:'',
-                        deliveryService: '',
-                        deliveryType: '',
-                        deliveryAdress:'',
-                        payment:'',
-                        town:''
-                    }
-                }
-            },
-            {
-                id: 153,
-                status: "Доставлений",
-                date: '24.01.2222',
-                sum: 560,
-                count: 2,
-                details: {
-                    goods: [
-                        {
-                            id: 33,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                        {
-                            id: 34,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                    ],
-                    delivery: {
-                        firstName:'',
-                        secondName:'',
-                        phone:'',
-                        email:'',
-                        deliveryService: '',
-                        deliveryType: '',
-                        deliveryAdress:'',
-                        payment:'',
-                        town:''
-                    }
-                }
-            },
-            {
-                id: 173,
-                status: "Доставлений",
-                date: '24.01.2222',
-                sum: 560,
-                count: 2,
-                details: {
-                    goods: [
-                        {
-                            id: 33,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                        {
-                            id: 34,
-                            name: '',
-                            type: '',
-                            count: '',
-                            price: '',
-                            img: 'https:via.placeholder.com/312x290',
-                        },
-                    ],
-                    delivery: {
-                        firstName:'',
-                        secondName:'',
-                        phone:'',
-                        email:'',
-                        deliveryService: '',
-                        deliveryType: '',
-                        deliveryAdress:'',
-                        payment:'',
-                        town:''
-                    }
-                }
-            },
         ]
 
         makeAutoObservable(this)
@@ -256,12 +128,16 @@ export default  class UserStore {
         return this.user
     }
 
-    cartSum(){
-        let sum = 0
-        this.cart.map(elem=>{
-            elem.count > 1 ? sum+=elem.price*elem.count : sum+=elem.price
-        })
-        return sum
+    addToLiked(good){
+        if(!good.liked){
+            good.liked = true
+            this.liked.push(good)
+            console.log(this.liked)
+        }else{
+            good.liked = false
+            this.liked = this.liked.filter(elem=>elem.id!==good.id)
+            console.log(this.liked)
+        }
     }
 
     addToCart(good){
@@ -270,11 +146,18 @@ export default  class UserStore {
             this.cart.push(good)
         }else{
             this.cart.find(elem=>elem.id===good.id).count += good.count
-            console.log(good.count, this.cart.find(elem=>elem.id===good.id).count)
         }
-
-
     }
+
+    cartSum(){
+        let sum = 0
+        this.cart.map(elem=>{
+            elem.count > 1 ? sum+=elem.price*elem.count : sum+=elem.price
+        })
+        return sum
+    }
+
+
 
     removeFromCart(id){
         this.cart = this.cart.filter(good=>good.id!==id)

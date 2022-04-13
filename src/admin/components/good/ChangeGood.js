@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Admin = () => {
+const ChangeGood = () => {
     return (
         <div>
-            admin
+            
         </div>
     );
 };
 
-export default Admin;
+export default ChangeGood;

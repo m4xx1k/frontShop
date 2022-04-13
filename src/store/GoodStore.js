@@ -1,4 +1,6 @@
 import {makeAutoObservable} from "mobx";
+import rn from 'random-number'
+
 
 export default  class UserStore {
     constructor() {
@@ -22,14 +24,15 @@ export default  class UserStore {
 
         ]
 
-        this.goods = [
+        this.allGoods = [
             {
                 id: 1,
                 name: "Антибактериальный антисептик спрей для рук Грейпфрут 50мл1",
                 price: 400,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Антисептики',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 2,
@@ -37,7 +40,8 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Антисептики',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 3,
@@ -45,7 +49,8 @@ export default  class UserStore {
                 price: 200,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Гели для душа',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 4,
@@ -53,7 +58,8 @@ export default  class UserStore {
                 price: 380,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Гели для душа',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 5,
@@ -61,7 +67,8 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Натуральное мыло',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 6,
@@ -69,7 +76,8 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Скрабы',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 7,
@@ -77,7 +85,8 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Крема',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 8,
@@ -85,7 +94,8 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Крема',
-                count: 1
+                count: 1,
+                liked:false
             },
             {
                 id: 9,
@@ -93,11 +103,20 @@ export default  class UserStore {
                 price: 80,
                 img: 'https:via.placeholder.com/312x290',
                 type: 'Крема',
-                count: 1
+                count: 1,
+                liked:false
             },
         ]
+        this.goods = []
 
+        this.pagination = {
+            limit:3,
+            selectedPage: 1,
+            list: []
 
+        }
+
+        this.sortedGoods = [];
         this.selectedType = '';
         this.selectedCategory = '';
         this.selectedGood = {};
@@ -106,10 +125,6 @@ export default  class UserStore {
     }
 
 
-
-    setCategories(categories){
-        this.categories = categories
-    }
 
 
     setGoods(goods){
@@ -125,11 +140,70 @@ export default  class UserStore {
             this.selectedType = ''
         }else{
             this.selectedType = type
+            this.pagination.selectedPage = 1
         }
     }
 
     setGood(good){
         this.selectedGood = good
+    }
+
+    getSortedGoods(){
+        this.sortedGoods = this.allGoods.filter(item=>item.type === this.selectedType)
+    }
+
+    makePagination(list){
+        const limit = this.pagination.limit
+        const page = this.pagination.selectedPage
+        this.pagination.list = []
+        for(let i = 0;i<Math.ceil(list.length/this.pagination.limit);i++) this.pagination.list.push(i+1)
+        this.goods = list.slice(limit*(page-1),limit*page)
+    }
+
+    addNewCategory(name){
+        this.categories.push({
+            id: rn({min:1000,max:100000, integer: true}),
+            name:name
+        })
+    }
+
+    changeCategory(id,newName){
+        this.categories = this.categories.map(elem=>{
+            if(elem.id===id) {
+                return {...elem, name: newName}
+            }else{
+                return elem
+            }
+        })
+    }
+
+
+    deleteCategory(id){
+        this.categories = this.categories.filter(elem=>elem.id!==id)
+    }
+
+    addNewType(name){
+        this.types.push({
+            id: rn({min:1000,max:100000, integer: true}),
+            name:name
+        })
+    }
+
+    changeType(id,newName){
+        this.types = this.types.map(elem=>{
+            if(elem.id===id) {
+                return {...elem, name: newName}
+            }else{
+                return elem
+            }
+        })
+    }
+
+
+    deleteType(id,type){
+        this.types = this.types.filter(elem=>elem.id!==id)
+        this.allGoods = this.allGoods.filter(elem=>elem.type!==type)
+        console.log(type)
     }
 
 }

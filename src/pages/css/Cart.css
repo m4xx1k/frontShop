@@ -15,6 +15,7 @@
 
 .cart-img{
     margin: 0;
+    border-radius: 5px;
 }
 
 .cart__item:last-child{

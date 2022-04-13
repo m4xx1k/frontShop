@@ -21,7 +21,7 @@ const Catalog = () => {
                         {
                             categories.map(category =>
 
-                                <NavLink to={SHOP_ROUTE}>
+                                <NavLink key={category.name} to={SHOP_ROUTE}>
                                     <div className="catalog__item" onClick={()=>good.setCategory(category.name)}>
                                         <div className="catalog-img">
                                             <img src="https://via.placeholder.com/145" alt=""/>
